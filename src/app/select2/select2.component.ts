@@ -9,9 +9,11 @@ import { OptionData } from './interface';
   encapsulation: ViewEncapsulation.None
 })
 export class Select2Component {
+    // data for select2 dropdown
     @Input() data: Array<OptionData>;
-    @ViewChild('foo') foo;
+    @ViewChild('selector') selector;
 
+    // Optional options for select2
     @Input() width: string;
     @Input() templateSelection;
     @Input() templateResult;
@@ -19,7 +21,7 @@ export class Select2Component {
     private element: JQuery;
 
     ngAfterViewInit() {
-        this.element = jQuery(this.foo.nativeElement);
+        this.element = jQuery(this.selector.nativeElement);
         this.element.select2({
             width: this.width,
             templateResult: this.templateResult,
