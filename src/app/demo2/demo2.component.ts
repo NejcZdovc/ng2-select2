@@ -23,5 +23,4 @@ export class Demo2Component {
       text: 'Horse'
     }
   ];
-
 }

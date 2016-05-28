@@ -1,60 +1,19 @@
 import {Component} from '@angular/core';
 import { Select2Component, OptionData } from './select2/index';
 import { Demo2Component } from './demo2/index';
+import { DataService } from "./shared/data.service";
 
 @Component({
     moduleId: module.id,
     selector: 'app-demo',
     templateUrl: 'demo.component.html',
-    directives: [Select2Component, Demo2Component]
+    directives: [Select2Component, Demo2Component],
+    providers: [DataService]
 })
 export class DemoComponent {
-    // items for select2
-    public items: Array<OptionData> = [
-        {
-            id: 'val1',
-            text: 'Value 1'
-        },
-        {
-            id: 'val2',
-            text: 'Value 2'
-        },
-        {
-            id: 'val3',
-            text: 'Value 3'
-        },
-        {
-            id: 'val4',
-            text: 'Value 4'
-        },
-        {
-            id: 'val5',
-            text: 'Value 5'
-        }
-    ];
 
-    public items2: Array<OptionData> = [
-        {
-            id: 'car1',
-            text: 'Car 1'
-        },
-        {
-            id: 'car2',
-            text: 'Car 2'
-        },
-        {
-            id: 'car3',
-            text: 'Car 3'
-        },
-        {
-            id: 'car4',
-            text: 'Car 4'
-        },
-        {
-            id: 'car5',
-            text: 'Car 5'
-        }
-    ];
+    constructor(private data: DataService) {
+    }
 
     // function for result template
     public templateResult: Function = (state: any) => {
@@ -62,7 +21,12 @@ export class DemoComponent {
             return state.text;
         }
 
-        return jQuery('<span>Changed - ' + state.text + '</span>');
+        let image: string = '<span class="image"></span>';
+        if(state.addition.image) {
+            image = '<span class="image"><img src="' + state.addition.image + '"</span>';
+        }
+
+        return jQuery('<span><b>' + state.addition.winner + '.</b> ' + image + ' ' + state.text + '</span>');
     }
 
     // function for selection tempalte
@@ -71,6 +35,6 @@ export class DemoComponent {
             return state.text;
         }
 
-        return jQuery('<span>Selected - ' + state.text + '</span>');
+        return jQuery('<span><b>' + state.addition.winner + '.</b> ' + state.text + '</span>');
     }
 }
