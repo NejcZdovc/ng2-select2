@@ -1,5 +1,5 @@
-Select 1: <select2 [width]="200" [data]="items" [templateResult]="templateResult" [templateSelection]="templateSelection"></select2>
+Select 1: <select2 [width]="200" [data]="data.getSimpleList()" [templateResult]="templateResult" [templateSelection]="templateSelection"></select2>
 <br/><br/>
-Select 2: <select2 [data]="items2"></select2>
+Select 2: <select2 [data]="data.getComplexList()"></select2>
 <br/><br/>
 <app-demo2></app-demo2>
