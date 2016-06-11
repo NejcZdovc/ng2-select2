@@ -13,7 +13,7 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'select2/dist/js/*',
-      'jquery/dist/*.js'
+      'jquery/dist/**/*.js'
     ]
   });
 };
