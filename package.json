@@ -1,8 +1,8 @@
 {
     "name": "ng2-select2",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "description": "Angular2 wrapper for select2",
-    "main": "src/ng2-select2.js",
+    "main": "dist/ng2-select2.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/NejcZdovc/ng2-select2.git"
@@ -28,6 +28,11 @@
         "e2e": "protractor"
     },
     "dependencies": {
+        "jquery": "^2.2.3",
+        "select2": "^4.0.2"
+    },
+    "devDependencies": {
+        "angular-cli": "^1.0.0-beta.5",
         "@angular/common": "2.0.0-rc.1",
         "@angular/compiler": "2.0.0-rc.1",
         "@angular/core": "2.0.0-rc.1",
@@ -40,11 +45,6 @@
         "rxjs": "5.0.0-beta.6",
         "systemjs": "0.19.26",
         "zone.js": "^0.6.12",
-        "jquery": "^2.2.3",
-        "select2": "^4.0.2"
-    },
-    "devDependencies": {
-        "angular-cli": "^1.0.0-beta.5",
         "codelyzer": "0.0.19",
         "ember-cli-inject-live-reload": "^1.4.0",
         "jasmine-core": "^2.4.1",
