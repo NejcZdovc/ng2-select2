@@ -12,8 +12,8 @@ module.exports = function(defaults) {
       'reflect-metadata/**/*.+(js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
-      'select2/dist/js/select2.js',
-      'jquery/dist/jquery.js'
+      'select2/dist/js/*',
+      'jquery/dist/*.js'
     ]
   });
 };

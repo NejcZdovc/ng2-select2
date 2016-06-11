@@ -3,8 +3,8 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map:any = {
-    '@select2': 'vendor/@select2',
-    '@jquery': 'vendor/@jquery'
+    '@select2': 'vendor/select2/dist/js/select2.min.js',
+    '@jquery': 'vendor/jquery/dist/jquery.min.js'
 };
 
 /** User packages configuration. */
