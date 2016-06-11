@@ -1,13 +1,13 @@
 {
     "name": "ng2-select2",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Angular2 wrapper for select2",
-    "main": "src/select2/index.js",
+    "main": "src/ng2-select2.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/NejcZdovc/ng2-select2.git"
     },
-    "keywoards": [
+    "keywords": [
         "angular2",
         "select2",
         "wrap"
@@ -27,7 +27,6 @@
         "pree2e": "webdriver-manager update",
         "e2e": "protractor"
     },
-    "private": true,
     "dependencies": {
         "@angular/common": "2.0.0-rc.1",
         "@angular/compiler": "2.0.0-rc.1",
