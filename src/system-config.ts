@@ -20,12 +20,6 @@ const packages: any = {
     defaultExtension: 'js'
   }
 };
-
-const meta: any = {
-    '@select2': {
-        deps: ['@jQuery']
-    }
-};
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
@@ -70,5 +64,5 @@ System.config({
 });
 
 // Apply the user's configuration.
-System.config({map, packages, meta});
+System.config({map, packages});
 
