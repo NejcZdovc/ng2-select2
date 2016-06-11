@@ -2,14 +2,24 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
-const map:any = {
-    '@select2': 'vendor/@select2',
-    '@jquery': 'vendor/@jquery'
+const map: any = {
+  '@jQuery': 'vendor/jquery/dist',
+  '@select2': 'vendor/select2/dist/js'
 };
 
 /** User packages configuration. */
-const packages:any = {};
-
+const packages: any = {
+  '@jQuery': {
+    main: 'jquery.min.js',
+    format: 'global',
+    defaultExtension: 'js'
+  },
+  '@select2': {
+    main: 'select2.min.js',
+    format: 'global',
+    defaultExtension: 'js'
+  }
+};
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
