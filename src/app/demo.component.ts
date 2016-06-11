@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Select2Component, OptionData } from './../select2/index';
 import { DataService } from "./shared/data.service";
-import '@jquery';
-import '@select2';
 
 @Component({
     moduleId: module.id,
