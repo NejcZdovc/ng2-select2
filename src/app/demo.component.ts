@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
-import { Select2Component, OptionData } from './select2/index';
-import { Demo2Component } from './demo2/index';
+import { Select2Component, OptionData } from './../select2/index';
 import { DataService } from "./shared/data.service";
 
 @Component({
     moduleId: module.id,
     selector: 'app-demo',
     templateUrl: 'demo.component.html',
-    directives: [Select2Component, Demo2Component],
+    directives: [Select2Component],
     providers: [DataService]
 })
 export class DemoComponent {

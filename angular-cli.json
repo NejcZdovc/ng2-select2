@@ -1,10 +1,14 @@
 {
   "project": {
-    "version": "1.0.0-beta.1",
-    "name": "select2"
+    "version": "1.0.0-beta.5",
+    "name": "n2-select2"
   },
   "apps": [
-    {"main": "src/main.ts", "tsconfig": "src/tsconfig.json"}
+    {
+      "main": "src/main.ts",
+      "tsconfig": "src/tsconfig.json",
+      "mobile": false
+    }
   ],
   "addons": [],
   "packages": [],
@@ -20,6 +24,8 @@
   },
   "defaults": {
     "prefix": "app",
-    "sourceDir": "src"
+    "sourceDir": "src",
+    "styleExt": "css",
+    "prefixInterfaces": false
   }
 }

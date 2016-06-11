@@ -1,5 +1,5 @@
 import {Component, Input, ViewChild, ViewEncapsulation} from '@angular/core';
-import {OptionData} from './interface';
+import {OptionData} from './select2.interface';
 
 @Component({
     moduleId: module.id,
