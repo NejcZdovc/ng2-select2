@@ -1,10 +1,3 @@
-import { Select2Component }  from './select2/index';
-export {OptionData} from './select2/index';
+export { OptionData } from './select2/select2.interface';
+export { Select2Component as SELECT2_DIRECTIVES } from './select2/select2.component';
 
-const SELECT2_DIRECTIVES:Array<any> = [Select2Component];
-
-export default {
-    directives: [
-        SELECT2_DIRECTIVES
-    ]
-};
