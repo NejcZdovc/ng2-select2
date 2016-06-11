@@ -1,0 +1,35 @@
+#ANGULAR CLI
+
+# compiled output
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+#System Files
+.DS_Store
+
+#CUSTOM
+/config
+/e2e
+/public
+/src
+/*.*
+/dist/app
+/dist/vendor
+/dist/*.*
+!/dist/ng2-select2.js
+/typings/**
