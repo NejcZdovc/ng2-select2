@@ -7,7 +7,7 @@ export class DataService {
             {
                 id: 'val1',
                 text: 'Value 1',
-                addition: {
+                additional: {
                     image: "app/shared/images/city-q-c-50-50-2.jpg",
                     winner: "4"
                 }
@@ -15,14 +15,14 @@ export class DataService {
             {
                 id: 'val2',
                 text: 'Value 2',
-                addition: {
+                additional: {
                     winner: "3"
                 }
             },
             {
                 id: 'val3',
                 text: 'Value 3',
-                addition: {
+                additional: {
                     image: "app/shared/images/city-q-c-50-50-4.jpg",
                     winner: "1"
                 }
@@ -30,7 +30,7 @@ export class DataService {
             {
                 id: 'val4',
                 text: 'Value 4',
-                addition: {
+                additional: {
                     image: "app/shared/images/city-q-c-50-50-6.jpg",
                     winner: "5"
                 }
@@ -38,7 +38,7 @@ export class DataService {
             {
                 id: 'val5',
                 text: 'Value 5',
-                addition: {
+                additional: {
                     image: "app/shared/images/city-q-c-50-50-8.jpg",
                     winner: "2"
                 }
