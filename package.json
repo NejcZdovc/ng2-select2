@@ -1,6 +1,6 @@
 {
     "name": "ng2-select2",
-    "version": "0.1.6",
+    "version": "0.2.1",
     "description": "Angular2 wrapper for select2",
     "main": "dist/ng2-select2.js",
     "repository": {

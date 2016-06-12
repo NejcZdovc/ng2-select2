@@ -1,6 +1,6 @@
 export interface OptionData {
     id: string;
     text: string;
-    items?: Array<OptionData>;
+    children?: Array<OptionData>;
     addition?: any;
 }
