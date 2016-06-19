@@ -21,11 +21,11 @@ export class DemoComponent {
         }
 
         let image: string = '<span class="image"></span>';
-        if(state.addition.image) {
-            image = '<span class="image"><img src="' + state.addition.image + '"</span>';
+        if(state.additional.image) {
+            image = '<span class="image"><img src="' + state.additional.image + '"</span>';
         }
 
-        return jQuery('<span><b>' + state.addition.winner + '.</b> ' + image + ' ' + state.text + '</span>');
+        return jQuery('<span><b>' + state.additional.winner + '.</b> ' + image + ' ' + state.text + '</span>');
     }
 
     // function for selection tempalte
@@ -34,6 +34,10 @@ export class DemoComponent {
             return state.text;
         }
 
-        return jQuery('<span><b>' + state.addition.winner + '.</b> ' + state.text + '</span>');
+        return jQuery('<span><b>' + state.additional.winner + '.</b> ' + state.text + '</span>');
     }
+	
+	public changed(e) {
+		console.log("Value changed: ", e);
+	}
 }

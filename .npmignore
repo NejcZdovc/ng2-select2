@@ -32,4 +32,5 @@ testem.log
 /dist/vendor
 /dist/*.*
 !/dist/ng2-select2.js
+!/dist/ng2-select2.d.ts
 /typings/**

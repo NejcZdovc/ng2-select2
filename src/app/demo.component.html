@@ -1,3 +1,3 @@
 Select 1: <select2 [width]="200" [data]="data.getSimpleList()" [templateResult]="templateResult" [templateSelection]="templateSelection"></select2>
 <br/><br/>
-Select 2: <select2 [data]="data.getComplexList()"></select2>
+Select 2: <select2 [selectedValue]="'car3'" (valueChanged)="changed($event)" [data]="data.getComplexList()" [width]="200" [theme]="'classic'"></select2>
