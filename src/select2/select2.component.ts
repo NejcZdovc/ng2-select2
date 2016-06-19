@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
 import {OptionData} from './select2.interface';
 
 let styles = `
@@ -499,7 +499,9 @@ let styles = `
 export class Select2Component {
     // data for select2 dropdown
     @Input() data:Array<OptionData>;
+    @Input() selectedValue: any;
     @ViewChild('selector') selector;
+	@Output() valueChanged = new EventEmitter();
 
     // Optional options for select2
     @Input() width:string;
@@ -511,6 +513,8 @@ export class Select2Component {
 
     ngAfterViewInit() {
         if(this.data) {
+			let that = this;
+
             this.element = jQuery(this.selector.nativeElement);
             this.element.select2({
                 data: this.data,
@@ -519,6 +523,16 @@ export class Select2Component {
                 theme: (this.theme) ? this.theme : 'default',
                 width: (this.width) ? this.width : 'resolve'
             });
-        }        
+			
+			if(typeof this.selectedValue !== 'undefined') {
+				this.element.val(that.selectedValue).trigger("change");
+			}
+			
+			this.element.on("select2:select", function (e: Event) {
+				that.valueChanged.emit({
+				  value: that.selector.nativeElement.value
+				})
+			});
+        }
     }
 }
