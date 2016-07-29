@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
+import {Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter, ElementRef} from '@angular/core';
 import {OptionData} from './select2.interface';
 
 let styles = `
@@ -500,7 +500,7 @@ export class Select2Component {
     // data for select2 dropdown
     @Input() data:Array<OptionData>;
     @Input() selectedValue: any;
-    @ViewChild('selector') selector;
+    @ViewChild('selector') selector: ElementRef;
 	@Output() valueChanged = new EventEmitter();
 
     // Optional options for select2
