@@ -1,4 +1,4 @@
-export class Select2Page {
+export class Ng2Select2Page {
   navigateTo() {
     return browser.get('/');
   }

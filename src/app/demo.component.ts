@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Select2Component, OptionData } from './../select2/index';
+import { Select2Component } from './../select2/index';
 import { DataService } from "./shared/data.service";
 
 @Component({
@@ -36,7 +36,7 @@ export class DemoComponent {
 
         return jQuery('<span><b>' + state.additional.winner + '.</b> ' + state.text + '</span>');
     }
-	
+
 	public changed(e) {
 		console.log("Value changed: ", e);
 	}
