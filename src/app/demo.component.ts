@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Select2Component } from './../select2/index';
-import { DataService } from "./shared/data.service";
+import { DataService } from './shared/data.service';
+import {Select2OptionData, Select2TemplateFunction} from '../select2/select2.interface';
 
 @Component({
     moduleId: module.id,
@@ -10,18 +11,20 @@ import { DataService } from "./shared/data.service";
     providers: [DataService]
 })
 export class DemoComponent {
+    private startValue: any = 'car3';
 
     constructor(private data: DataService) {
     }
 
     // function for result template
-    public templateResult: Function = (state: any) => {
+    public templateResult: Select2TemplateFunction = (state: Select2OptionData): JQuery | string => {
         if (!state.id) {
             return state.text;
         }
 
-        let image: string = '<span class="image"></span>';
-        if(state.additional.image) {
+        let image = '<span class="image"></span>';
+
+        if (state.additional.image) {
             image = '<span class="image"><img src="' + state.additional.image + '"</span>';
         }
 
@@ -29,7 +32,7 @@ export class DemoComponent {
     }
 
     // function for selection tempalte
-    public templateSelection: Function = (state: any) => {
+    public templateSelection: Select2TemplateFunction = (state: Select2OptionData): JQuery | string => {
         if (!state.id) {
             return state.text;
         }
@@ -37,7 +40,7 @@ export class DemoComponent {
         return jQuery('<span><b>' + state.additional.winner + '.</b> ' + state.text + '</span>');
     }
 
-	public changed(e) {
-		console.log("Value changed: ", e);
-	}
+    public changed(e: string): void {
+        console.log('Value changed: ', e);
+    }
 }
