@@ -535,4 +535,8 @@ export class Select2Component {
 			});
         }
     }
+        
+    ngOnDestroy() {
+        this.element.off("select2:select");
+    }
 }
