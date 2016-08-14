@@ -1,5 +1,3 @@
-/// <reference types="jquery" />
-/// <reference types="select2" />
 export interface Select2OptionData {
     id: string;
     text: string;
