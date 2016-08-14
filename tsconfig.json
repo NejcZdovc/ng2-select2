@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
@@ -10,20 +12,17 @@
     "lib": ["es5", "dom"],
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "paths": [
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "types": [
       "core-js",
-      "node"
+      "node",
+      "jquery",
+      "select2"
     ]
   },
   "exclude": [
     "node_modules"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true,
-    "forkChecker": true
-  },
   "compileOnSave": false,
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false }

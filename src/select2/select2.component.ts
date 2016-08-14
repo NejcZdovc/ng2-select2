@@ -1,17 +1,17 @@
 import {
-    Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter, ElementRef, OnInit,
+    Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter, ElementRef,
     AfterViewInit
 } from '@angular/core';
-import {Select2OptionData, Select2TemplateFunction} from './select2.interface';
+
+import { Select2OptionData, Select2TemplateFunction } from './select2.interface';
 
 @Component({
-    moduleId: module.id,
     selector: 'select2',
     template: '<select #selector></select>',
-    styleUrls: ['select2.component.scss'],
+    styleUrls: ['select2.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class Select2Component implements AfterViewInit, OnInit {
+export class Select2Component implements AfterViewInit {
     @ViewChild('selector') selector: ElementRef;
 
     // data for select2 dropdown
@@ -29,15 +29,11 @@ export class Select2Component implements AfterViewInit, OnInit {
 
     private element: JQuery;
 
-    ngOnInit() {
-
-    }
-
     ngAfterViewInit() {
         if (this.data) {
             let that = this;
 
-            this.element = jQuery(this.selector.nativeElement);
+            this.element = JQuery(this.selector.nativeElement);
             this.element.select2({
                 data: this.data,
                 templateResult: this.templateResult,
@@ -56,5 +52,9 @@ export class Select2Component implements AfterViewInit, OnInit {
                 });
             });
         }
+    }
+
+    ngOnDestroy() {
+        this.element.off("select2:select");
     }
 }

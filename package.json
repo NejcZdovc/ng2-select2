@@ -1,9 +1,9 @@
 {
   "name": "ng2-select2",
-  "version": "0.3.1",
+  "version": "0.4.0-beta.3",
   "description": "Angular2 wrapper for select2",
-  "main": "dist/ng2-select2.js",
-  "typings": "dist/ng2-select2.d.ts",
+  "main": "ng2-select2.js",
+  "typings": "ng2-select2.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/NejcZdovc/ng2-select2.git"
@@ -21,42 +21,22 @@
   "homepage": "https://github.com/NejcZdovc/ng2-select2",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run server:dev",
-    "start:hmr": "npm run server:dev -- --env.HMR",
-    "server:dev": "webpack-dev-server --env.ENV development",
-    "prebuild": "rm -rf dist",
-    "debug:build": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js --env.ENV development",
-    "build": "webpack --env.ENV development"
+    "watch": "tsc -w",
+    "build": "tsc"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
     "@angular/compiler": "2.0.0-rc.5",
     "@angular/core": "2.0.0-rc.5",
-    "@angular/http": "2.0.0-rc.5",
     "@angular/platform-browser": "2.0.0-rc.5",
     "@angular/platform-browser-dynamic": "2.0.0-rc.5",
-    "core-js": "^2.2.0",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12",
-    "@types/jquery": "1.10.28",
-    "@types/select2": "0.0.27"
+    "@types/select2": "0.0.27",
+    "@types/jquery": "1.10.28"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.28",
-    "@types/node": "^4.0.30",
-    "awesome-typescript-loader": "^2.0.1",
-    "es6-promise": "^3.1.2",
-    "es6-shim": "^0.35.0",
-    "ignore-loader": "^0.1.1",
-    "raw-loader": "^0.5.1",
-    "string-replace-loader": "github:gdi2290/string-replace-loader",
-    "to-string-loader": "^1.1.4",
-    "ts-helpers": "github:gdi2290/ts-helpers",
-    "ts-loader": "^0.8.2",
-    "ts-node": "^1.2.2",
-    "typescript": "^2.0.0-beta",
-    "webpack": "^2.1.0-beta.20",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "@types/core-js": "0.9.28",
+    "@types/node": "4.0.30",
+    "typescript": "2.0.0",
+    "core-js": "^2.2.0"
   }
 }
