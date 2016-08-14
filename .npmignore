@@ -12,6 +12,12 @@
 npm-debug.log
 testem.log
 
+#TS files
+**/*.ts
+*.ts
+!**/*.d.ts
+!*.d.ts
+
 #System Files
 .DS_Store
 
