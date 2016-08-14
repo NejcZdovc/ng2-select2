@@ -8,7 +8,7 @@ var Select2Component = (function () {
     Select2Component.prototype.ngAfterViewInit = function () {
         if (this.data) {
             var that_1 = this;
-            this.element = JQuery(this.selector.nativeElement);
+            this.element = jQuery(this.selector.nativeElement);
             this.element.select2({
                 data: this.data,
                 templateResult: this.templateResult,
