@@ -25,18 +25,19 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@angular/common": "2.0.0-rc.5",
-    "@angular/compiler": "2.0.0-rc.5",
-    "@angular/core": "2.0.0-rc.5",
-    "@angular/platform-browser": "2.0.0-rc.5",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
-    "@types/select2": "0.0.27",
-    "@types/jquery": "1.10.28"
+    "@angular/common": "^2.0.0-rc.5",
+    "@angular/compiler": "^2.0.0-rc.5",
+    "@angular/core": "^2.0.0-rc.5",
+    "@angular/platform-browser": "^2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.5",
+    "@types/select2": "^0.0.27",
+    "@types/jquery": "^1.10.x",
+    "rxjs": "^5.0.0-beta.6"
   },
   "devDependencies": {
-    "@types/core-js": "0.9.28",
-    "@types/node": "4.0.30",
-    "typescript": "2.0.0",
+    "@types/core-js": "^0.9.28",
+    "@types/node": "^4.0.30",
+    "typescript": "^2.0.0",
     "core-js": "^2.2.0"
   }
 }
