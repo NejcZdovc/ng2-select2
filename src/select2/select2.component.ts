@@ -27,7 +27,7 @@ export class Select2Component implements AfterViewInit {
     @Input() templateSelection: Select2TemplateFunction;
     @Input() templateResult: Select2TemplateFunction;
 
-    private element: jQuery;
+    private element: JQuery;
 
     ngAfterViewInit() {
         if (this.data) {
