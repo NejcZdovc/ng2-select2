@@ -1,8 +1,15 @@
-import {Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter, ElementRef} from '@angular/core';
-import {OptionData} from './select2.interface';
+import {
+    Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter, ElementRef,
+    AfterViewInit
+} from '@angular/core';
 
-let styles = `
-.select2-container {
+import { Select2OptionData, Select2TemplateFunction } from './select2.interface';
+
+@Component({
+    selector: 'select2',
+    template: '<select #selector></select>',
+    styles: [`
+    .select2-container {
     box-sizing: border-box;
     display: inline-block;
     margin: 0;
@@ -487,33 +494,31 @@ let styles = `
 
 .select2-container--classic.select2-container--open .select2-dropdown {
     border-color: #5897fb; }
-`;
 
-@Component({
-    moduleId: module.id,
-    selector: 'select2',
-    template: '<select #selector></select>',
-    styles: [styles],
+    `],
     encapsulation: ViewEncapsulation.None
 })
-export class Select2Component {
-    // data for select2 dropdown
-    @Input() data:Array<OptionData>;
-    @Input() selectedValue: any;
+export class Select2Component implements AfterViewInit {
     @ViewChild('selector') selector: ElementRef;
-	@Output() valueChanged = new EventEmitter();
+
+    // data for select2 dropdown
+    @Input() data: Array<Select2OptionData>;
+    @Input() value: any;
+
+    @Output() valueChanged = new EventEmitter();
+    @Output() blur = new EventEmitter();
 
     // Optional options for select2
-    @Input() width:string;
-    @Input() theme:string;
-    @Input() templateSelection;
-    @Input() templateResult;
+    @Input() width: string;
+    @Input() theme: string;
+    @Input() templateSelection: Select2TemplateFunction;
+    @Input() templateResult: Select2TemplateFunction;
 
-    private element:JQuery;
+    private element: JQuery;
 
     ngAfterViewInit() {
-        if(this.data) {
-			let that = this;
+        if (this.data) {
+            let that = this;
 
             this.element = jQuery(this.selector.nativeElement);
             this.element.select2({
@@ -523,19 +528,19 @@ export class Select2Component {
                 theme: (this.theme) ? this.theme : 'default',
                 width: (this.width) ? this.width : 'resolve'
             });
-			
-			if(typeof this.selectedValue !== 'undefined') {
-				this.element.val(that.selectedValue).trigger("change");
-			}
-			
-			this.element.on("select2:select", function (e: Event) {
-				that.valueChanged.emit({
-				  value: that.selector.nativeElement.value
-				})
-			});
+
+            if (typeof this.value !== 'undefined') {
+                this.element.val(that.value).trigger('change');
+            }
+
+            this.element.on('select2:select', function (e: Event) {
+                that.valueChanged.emit({
+                    value: that.selector.nativeElement.value
+                });
+            });
         }
     }
-        
+
     ngOnDestroy() {
         this.element.off("select2:select");
     }

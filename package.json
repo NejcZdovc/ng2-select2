@@ -1,61 +1,43 @@
 {
-    "name": "ng2-select2",
-    "version": "0.3.1",
-    "description": "Angular2 wrapper for select2",
-    "main": "dist/ng2-select2.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/NejcZdovc/ng2-select2.git"
-    },
-    "keywords": [
-        "angular2",
-        "select2",
-        "wrap"
-    ],
-    "author": "Nejc Zdovc <nejc.zdovc@3zsistemi.si>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/NejcZdovc/ng2-select2/issues"
-    },
-    "homepage": "https://github.com/NejcZdovc/ng2-select2",
-    "angular-cli": {},
-    "scripts": {
-        "start": "ng server",
-        "postinstall": "typings install",
-        "lint": "tslint \"src/**/*.ts\"",
-        "test": "ng test",
-        "pree2e": "webdriver-manager update",
-        "e2e": "protractor"
-    },
-    "dependencies": {
-        "jquery": "^2.2.3",
-        "select2": "^4.0.2"
-    },
-    "devDependencies": {
-        "@angular/common": "2.0.0-rc.1",
-        "@angular/compiler": "2.0.0-rc.1",
-        "@angular/core": "2.0.0-rc.1",
-        "@angular/http": "2.0.0-rc.1",
-        "@angular/platform-browser": "2.0.0-rc.1",
-        "@angular/platform-browser-dynamic": "2.0.0-rc.1",
-        "@angular/router": "3.0.0-alpha.3",
-        "es6-shim": "0.35.1",
-        "reflect-metadata": "0.1.3",
-        "rxjs": "5.0.0-beta.6",
-        "systemjs": "0.19.26",
-        "zone.js": "0.6.12",
-        "angular-cli": "1.0.0-beta.6",
-        "codelyzer": "0.0.20",
-        "ember-cli-inject-live-reload": "1.4.0",
-        "jasmine-core": "2.4.1",
-        "jasmine-spec-reporter": "2.5.0",
-        "karma": "0.13.22",
-        "karma-chrome-launcher": "0.2.3",
-        "karma-jasmine": "0.3.8",
-        "protractor": "3.3.0",
-        "ts-node": "0.5.5",
-        "tslint": "3.11.0",
-        "typescript": "1.8.10",
-        "typings": "0.8.1"
-    }
+  "name": "ng2-select2",
+  "version": "0.4.2",
+  "description": "Angular2 wrapper for select2",
+  "main": "ng2-select2.js",
+  "typings": "ng2-select2.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NejcZdovc/ng2-select2.git"
+  },
+  "keywords": [
+    "angular2",
+    "select2",
+    "wrap"
+  ],
+  "author": "Nejc Zdovc <nejc.zdovc@3zsistemi.si>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NejcZdovc/ng2-select2/issues"
+  },
+  "homepage": "https://github.com/NejcZdovc/ng2-select2",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@angular/common": "^2.0.0-rc.5",
+    "@angular/compiler": "^2.0.0-rc.5",
+    "@angular/core": "^2.0.0-rc.5",
+    "@angular/platform-browser": "^2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.5",
+    "@types/select2": "^0.0.27",
+    "@types/jquery": "^1.10.x",
+    "rxjs": "^5.0.0-beta.6"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.28",
+    "@types/node": "^4.0.30",
+    "typescript": "^2.0.0",
+    "core-js": "^2.2.0"
+  }
 }

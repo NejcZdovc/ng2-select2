@@ -4,7 +4,6 @@ export interface Select2OptionData {
     children?: Array<Select2OptionData>;
     additional?: any;
 }
-
 export interface Select2TemplateFunction {
     (state: Select2OptionData): JQuery | string;
 }
