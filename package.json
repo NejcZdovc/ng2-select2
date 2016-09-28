@@ -1,6 +1,6 @@
 {
   "name": "ng2-select2",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Angular2 wrapper for select2",
   "main": "ng2-select2.js",
   "typings": "ng2-select2.d.ts",
@@ -24,20 +24,24 @@
     "watch": "tsc -w",
     "build": "tsc"
   },
-  "dependencies": {
-    "@angular/common": "^2.0.0-rc.5",
-    "@angular/compiler": "^2.0.0-rc.5",
-    "@angular/core": "^2.0.0-rc.5",
-    "@angular/platform-browser": "^2.0.0-rc.5",
-    "@angular/platform-browser-dynamic": "^2.0.0-rc.5",
-    "@types/select2": "^0.0.27",
-    "@types/jquery": "^1.10.x",
-    "rxjs": "^5.0.0-beta.6"
+  "peerDependencies": {
+    "@angular/common": "2.0.1",
+    "@angular/compiler": "2.0.1",
+    "@angular/core": "2.0.1"
   },
   "devDependencies": {
+    "@angular/common": "2.0.1",
+    "@angular/compiler": "2.0.1",
+    "@angular/core": "2.0.1",
+    "@angular/platform-browser": "2.0.1",
+    "@angular/platform-browser-dynamic": "2.0.1",
     "@types/core-js": "^0.9.28",
     "@types/node": "^4.0.30",
-    "typescript": "^2.0.0",
-    "core-js": "^2.2.0"
+    "@types/jquery": "^1.10.x",
+    "@types/select2": "^0.0.27",
+    "core-js": "^2.2.0",
+    "rxjs": "^5.0.0-beta.12",
+    "zone.js": "0.6.21",
+    "typescript": "^2.0.0"
   }
 }
