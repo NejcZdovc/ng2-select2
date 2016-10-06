@@ -29,9 +29,9 @@
     "@types/select2": "^0.0.27"
   },
   "peerDependencies": {
-    "@angular/common": "2.0.1",
-    "@angular/compiler": "2.0.1",
-    "@angular/core": "2.0.1"
+    "@angular/common": "^2.0.1",
+    "@angular/compiler": "^2.0.1",
+    "@angular/core": "^2.0.1"
   },
   "devDependencies": {
     "@angular/common": "2.0.1",
