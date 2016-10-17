@@ -522,6 +522,10 @@ export class Select2Component implements AfterViewInit {
             this.initPlugin();
             this.element.trigger("change");
         }
+        if(this.element && changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
+            this.element.val(changes['value'].currentValue);
+            this.element.trigger('change');
+        }
     }
 
     ngAfterViewInit() {
@@ -546,6 +550,11 @@ export class Select2Component implements AfterViewInit {
     }
 
     private initPlugin() {
+        // If select2 already initialized remove him and remove all tags inside
+        if (this.element.hasClass('select2-hidden-accessible') == true) {
+            this.element.select2('destroy');
+            this.element.html('')
+        }
         this.element.select2({
             data: this.data,
             templateResult: this.templateResult,
