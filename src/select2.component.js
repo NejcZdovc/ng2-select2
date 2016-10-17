@@ -16,9 +16,12 @@ var Select2Component = (function () {
     }
     Select2Component.prototype.ngOnChanges = function (changes) {
         if (this.element && changes['data'] && changes['data'].previousValue !== changes['data'].currentValue) {
-            var that = this;
             this.initPlugin();
             this.element.trigger("change");
+        }
+        if (this.element && changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
+            this.element.val(changes['value'].currentValue);
+            this.element.trigger('change');
         }
     };
     Select2Component.prototype.ngAfterViewInit = function () {
@@ -28,7 +31,7 @@ var Select2Component = (function () {
         if (typeof this.value !== 'undefined') {
             this.element.val(that.value).trigger('change');
         }
-        this.element.on('select2:select', function (e) {
+        this.element.on('select2:select', function () {
             that.valueChanged.emit({
                 value: that.selector.nativeElement.value
             });
@@ -38,6 +41,10 @@ var Select2Component = (function () {
         this.element.off("select2:select");
     };
     Select2Component.prototype.initPlugin = function () {
+        if (this.element.hasClass('select2-hidden-accessible') == true) {
+            this.element.select2('destroy');
+            this.element.html('');
+        }
         this.element.select2({
             data: this.data,
             templateResult: this.templateResult,

@@ -1,6 +1,6 @@
 {
   "name": "ng2-select2",
-  "version": "0.6.0-beta.0",
+  "version": "0.6.0-beta.1",
   "description": "Angular2 wrapper for select2",
   "main": "ng2-select2.js",
   "typings": "ng2-select2.d.ts",
