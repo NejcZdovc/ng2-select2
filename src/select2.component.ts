@@ -1,6 +1,6 @@
 import {
     Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter, ElementRef,
-    AfterViewInit
+    AfterViewInit, SimpleChanges, ChangeDetectionStrategy
 } from '@angular/core';
 
 import { Select2OptionData, Select2TemplateFunction } from './select2.interface';
@@ -496,7 +496,8 @@ import { Select2OptionData, Select2TemplateFunction } from './select2.interface'
     border-color: #5897fb; }
 
     `],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Select2Component implements AfterViewInit {
     @ViewChild('selector') selector: ElementRef;
@@ -516,32 +517,50 @@ export class Select2Component implements AfterViewInit {
 
     private element: JQuery;
 
-    ngAfterViewInit() {
-        if (this.data) {
-            let that = this;
-
-            this.element = jQuery(this.selector.nativeElement);
-            this.element.select2({
-                data: this.data,
-                templateResult: this.templateResult,
-                templateSelection: this.templateSelection,
-                theme: (this.theme) ? this.theme : 'default',
-                width: (this.width) ? this.width : 'resolve'
-            });
-
-            if (typeof this.value !== 'undefined') {
-                this.element.val(that.value).trigger('change');
-            }
-
-            this.element.on('select2:select', function (e: Event) {
-                that.valueChanged.emit({
-                    value: that.selector.nativeElement.value
-                });
-            });
+    ngOnChanges(changes: SimpleChanges) {
+        if(this.element && changes['data'] && changes['data'].previousValue !== changes['data'].currentValue) {
+            this.initPlugin();
+            this.element.trigger("change");
         }
+        if(this.element && changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
+            this.element.val(changes['value'].currentValue);
+            this.element.trigger('change');
+        }
+    }
+
+    ngAfterViewInit() {
+        let that = this;
+
+        this.element = jQuery(this.selector.nativeElement);
+        this.initPlugin();
+
+        if (typeof this.value !== 'undefined') {
+            this.element.val(that.value).trigger('change');
+        }
+
+        this.element.on('select2:select', function () {
+            that.valueChanged.emit({
+                value: that.selector.nativeElement.value
+            });
+        });
     }
 
     ngOnDestroy() {
         this.element.off("select2:select");
+    }
+
+    private initPlugin() {
+        // If select2 already initialized remove him and remove all tags inside
+        if (this.element.hasClass('select2-hidden-accessible') == true) {
+            this.element.select2('destroy');
+            this.element.html('')
+        }
+        this.element.select2({
+            data: this.data,
+            templateResult: this.templateResult,
+            templateSelection: this.templateSelection,
+            theme: (this.theme) ? this.theme : 'default',
+            width: (this.width) ? this.width : 'resolve'
+        });
     }
 }

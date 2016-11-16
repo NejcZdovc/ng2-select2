@@ -1,4 +1,4 @@
-import { EventEmitter, ElementRef, AfterViewInit } from '@angular/core';
+import { EventEmitter, ElementRef, AfterViewInit, SimpleChanges } from '@angular/core';
 import { Select2OptionData, Select2TemplateFunction } from './select2.interface';
 export declare class Select2Component implements AfterViewInit {
     selector: ElementRef;
@@ -11,6 +11,8 @@ export declare class Select2Component implements AfterViewInit {
     templateSelection: Select2TemplateFunction;
     templateResult: Select2TemplateFunction;
     private element;
+    ngOnChanges(changes: SimpleChanges): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
+    private initPlugin();
 }
