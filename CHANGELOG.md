@@ -1,3 +1,9 @@
+# 0.6.1 (18.11.2016)
+
+### Features
+* Removed generated files from GIT
+* Added AOT build
+
 # 0.6.0 (16.11.2016)
 
 ### Features
