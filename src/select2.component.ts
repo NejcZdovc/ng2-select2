@@ -502,7 +502,7 @@ import { Select2OptionData, Select2TemplateFunction } from './select2.interface'
 export class Select2Component implements AfterViewInit {
     @ViewChild('selector') selector: ElementRef;
 
-    // data for select2 dropdown
+    // data for select2 drop down
     @Input() data: Array<Select2OptionData>;
     @Input() value: any;
 
@@ -515,13 +515,13 @@ export class Select2Component implements AfterViewInit {
     @Input() templateSelection: Select2TemplateFunction;
     @Input() templateResult: Select2TemplateFunction;
 
-    private element: JQuery;
+    private element: JQuery = undefined;
 
     ngOnChanges(changes: SimpleChanges) {
-        if(this.element && changes['data'] && changes['data'].previousValue !== changes['data'].currentValue) {
+        if(this.element && changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
             this.initPlugin();
-            this.element.trigger("change");
         }
+
         if(this.element && changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
             this.element.val(changes['value'].currentValue);
             this.element.trigger('change');
@@ -555,6 +555,7 @@ export class Select2Component implements AfterViewInit {
             this.element.select2('destroy');
             this.element.html('')
         }
+
         this.element.select2({
             data: this.data,
             templateResult: this.templateResult,
