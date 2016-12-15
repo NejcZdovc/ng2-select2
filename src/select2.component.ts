@@ -1,6 +1,6 @@
 import {
     AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
-    Output, SimpleChanges, ViewChild, ViewEncapsulation
+    Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer
 } from '@angular/core';
 
 import { Select2OptionData, Select2TemplateFunction } from './select2.interface';
@@ -518,6 +518,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
     private element: JQuery = undefined;
     private check: boolean = false;
 
+    constructor(private renderer: Renderer) {}
+
     ngOnChanges(changes: SimpleChanges) {
         if(!this.element) {
             return;
@@ -530,8 +532,9 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
         if(changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
             const newValue: string = changes['value'].currentValue;
 
-            this.element.val(newValue);
+            this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
             this.element.trigger('change.select2');
+
             this.valueChanged.emit({
                 value: newValue
             });
@@ -545,7 +548,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
         this.initPlugin();
 
         if (typeof this.value !== 'undefined') {
-            this.element.val(that.value).trigger('change.select2');
+            this.renderer.setElementProperty(this.selector.nativeElement, 'value', this.value);
+            this.element.trigger('change.select2');
         }
 
         this.element.on('select2:select', function () {
@@ -573,7 +577,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
         // If select2 already initialized remove him and remove all tags inside
         if (this.element.hasClass('select2-hidden-accessible') == true) {
             this.element.select2('destroy');
-            this.element.html('')
+            this.renderer.setElementProperty(this.selector.nativeElement, 'innerHTML', '');
         }
 
         this.element.select2({
