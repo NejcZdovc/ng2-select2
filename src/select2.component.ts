@@ -512,6 +512,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
     // Optional options for select2
     @Input() width: string;
     @Input() theme: string;
+    @Input() multiple: boolean = false;
+    @Input() closeOnSelect:boolean = true;
     @Input() templateSelection: Select2TemplateFunction;
     @Input() templateResult: Select2TemplateFunction;
 
@@ -590,7 +592,9 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
             templateResult: this.templateResult,
             templateSelection: this.templateSelection,
             theme: (this.theme) ? this.theme : 'default',
-            width: (this.width) ? this.width : 'resolve'
+            width: (this.width) ? this.width : 'resolve',
+            multiple: this.multiple,
+            closeOnSelect: this.closeOnSelect
         });
     }
 }
