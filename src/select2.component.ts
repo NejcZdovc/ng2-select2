@@ -528,8 +528,13 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
         }
 
         if(changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
-            this.element.val(changes['value'].currentValue);
+            const newValue: string = changes['value'].currentValue;
+
+            this.element.val(newValue);
             this.element.trigger('change.select2');
+            this.valueChanged.emit({
+                value: newValue
+            });
         }
     }
 
