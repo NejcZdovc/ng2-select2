@@ -1,6 +1,6 @@
 import {
-    Component, Input, ViewChild, ViewEncapsulation, Output, EventEmitter, ElementRef,
-    AfterViewInit, SimpleChanges, ChangeDetectionStrategy
+    AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
+    Output, SimpleChanges, ViewChild, ViewEncapsulation
 } from '@angular/core';
 
 import { Select2OptionData, Select2TemplateFunction } from './select2.interface';
@@ -499,7 +499,7 @@ import { Select2OptionData, Select2TemplateFunction } from './select2.interface'
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Select2Component implements AfterViewInit {
+export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
     @ViewChild('selector') selector: ElementRef;
 
     // data for select2 drop down
@@ -516,15 +516,20 @@ export class Select2Component implements AfterViewInit {
     @Input() templateResult: Select2TemplateFunction;
 
     private element: JQuery = undefined;
+    private check: boolean = false;
 
     ngOnChanges(changes: SimpleChanges) {
-        if(this.element && changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
+        if(!this.element) {
+            return;
+        }
+
+        if(changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
             this.initPlugin();
         }
 
-        if(this.element && changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
+        if(changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
             this.element.val(changes['value'].currentValue);
-            this.element.trigger('change');
+            this.element.trigger('change.select2');
         }
     }
 
@@ -535,7 +540,7 @@ export class Select2Component implements AfterViewInit {
         this.initPlugin();
 
         if (typeof this.value !== 'undefined') {
-            this.element.val(that.value).trigger('change');
+            this.element.val(that.value).trigger('change.select2');
         }
 
         this.element.on('select2:select', function () {
@@ -550,6 +555,16 @@ export class Select2Component implements AfterViewInit {
     }
 
     private initPlugin() {
+        if(!this.element.select2) {
+            if(!this.check) {
+                this.check = true;
+                console.log("Please add Select2 library (js file) to the project. You can download it from https://github.com/select2/select2/tree/master/dist/js.");
+
+            }
+
+            return;
+        }
+
         // If select2 already initialized remove him and remove all tags inside
         if (this.element.hasClass('select2-hidden-accessible') == true) {
             this.element.select2('destroy');
