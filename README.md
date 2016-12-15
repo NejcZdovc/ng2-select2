@@ -48,16 +48,37 @@ Add package to your project `npm i -S ng2-select2` (this will save package to yo
 })
 ```
 
-2) Add it to your [template](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.component.html#L6). You need to define `startValue` and `startData` in your `.ts` file. 
+2) Add it to your [template](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.component.html#L6). You need to define at least `data` `@Input`.
 
-Example for [startData](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.component.ts#L16) via [service](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/services/data.service.ts#L50). 
-Example for [startValue] (https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.component.ts#L11).
+Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/demos/basic/basic.component.ts#L13).
 
 ```
-<select2 [value]="startValue" [data]="startData"></select2>
+<select2 [data]="exampleData"></select2>
 ```
 
 
 ## Demo
 
 You can view a live demo [here](https://nejczdovc.github.io/ng2-select2/) or check out [demo branch](https://github.com/NejcZdovc/ng2-select2/tree/demo) where you can find source of this demo created with Angular CLI.
+
+Every single demo is separate component. Bellow you can find links to components with descriptions.
+
+#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/basic)
+- basic demo with only data input
+
+#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/options) with options
+- width option
+- theme option
+
+#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/template) with custom template demo
+- custom template for drop down
+- custom template for select2 input
+
+#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/change) with data changing demo
+- when you change value in drop down, new value is displayed on the screen
+- you can change selected value
+- you can change select2 data
+
+#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/dynamic) with dynamic load demo
+- data is loaded with 4 second delay
+- selected value is loaded with 6 second delay
