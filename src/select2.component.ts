@@ -504,21 +504,23 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
 
     // data for select2 drop down
     @Input() data: Array<Select2OptionData>;
+
+    // value for select2
     @Input() value: any;
 
-    @Output() valueChanged = new EventEmitter();
-    @Output() blur = new EventEmitter();
-
-    // Optional options for select2
+    // width of select2 input
     @Input() width: string;
-    @Input() theme: string;
-    @Input() templateSelection: Select2TemplateFunction;
-    @Input() templateResult: Select2TemplateFunction;
+
+    // all additional options
+    @Input() options: Select2Options;
+
+    // emitter when value is changed
+    @Output() valueChanged = new EventEmitter();
 
     private element: JQuery = undefined;
     private check: boolean = false;
 
-    constructor(private renderer: Renderer) {}
+    constructor(private renderer: Renderer) { }
 
     ngOnChanges(changes: SimpleChanges) {
         if(!this.element) {
@@ -573,7 +575,6 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
             if(!this.check) {
                 this.check = true;
                 console.log("Please add Select2 library (js file) to the project. You can download it from https://github.com/select2/select2/tree/master/dist/js.");
-
             }
 
             return;
@@ -585,12 +586,11 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy {
             this.renderer.setElementProperty(this.selector.nativeElement, 'innerHTML', '');
         }
 
-        this.element.select2({
+        let options: Select2Options = {
             data: this.data,
-            templateResult: this.templateResult,
-            templateSelection: this.templateSelection,
-            theme: (this.theme) ? this.theme : 'default',
             width: (this.width) ? this.width : 'resolve'
-        });
+        };
+
+        this.element.select2(Object.assign(options, this.options));
     }
 }
