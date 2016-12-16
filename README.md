@@ -69,6 +69,8 @@ Every single demo is separate component. Bellow you can find links to components
 #### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/options) with options
 - width option
 - theme option
+- multiple option
+- closeOnSelect option
 
 #### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/template) with custom template demo
 - custom template for drop down
