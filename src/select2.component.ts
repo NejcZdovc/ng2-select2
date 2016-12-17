@@ -121,7 +121,16 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             width: (this.width) ? this.width : 'resolve'
         };
 
-        this.element.select2(Object.assign(options, this.options));
+        Object.assign(options, this.options);
+
+        if(options.matcher) {
+            jQuery.fn.select2.amd.require(['select2/compat/matcher'], (oldMatcher: any) => {
+                options.matcher = oldMatcher(options.matcher);
+                this.element.select2(options);
+            });
+        } else {
+            this.element.select2(options);
+        }
     }
 
     private style: string = `
