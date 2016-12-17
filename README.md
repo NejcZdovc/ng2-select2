@@ -57,6 +57,19 @@ Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-se
 ```
 
 
+## Options
+
+### Inputs
+* **data** `Array<Select2OptionData`: Data used for generating select 2
+* **value** `string`: Default value for select 2
+* **cssImport** `boolean`: Disable or enable default style for select 2, default value is `true`
+* **width** `string`: Set width for the input, default value is `resolve`
+* **options** `Select2Options`: Set options for select 2, [all available options](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/4869992bc079b88280b9ff91213528904109e8ae/select2/index.d.ts#L40) for select 2
+
+### Outputs
+* **valueChanged** `string`: Emitted when value changes in select 2 drop down 
+
+
 ## Demo
 
 You can view a live demo [here](https://nejczdovc.github.io/ng2-select2/) or check out [demo branch](https://github.com/NejcZdovc/ng2-select2/tree/demo) where you can find source of this demo created with Angular CLI.
