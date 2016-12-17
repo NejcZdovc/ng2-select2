@@ -1,11 +1,12 @@
 # 1.0.0-beta
 
 ### Features
-* Multiple options
-* Disable default style for select2
+* Multiple options [223f02f](https://github.com/NejcZdovc/ng2-select2/commit/223f02fc598cd4d550baf03f82874839ee95e2c1)
+* Updated dependencies [af513af](https://github.com/NejcZdovc/ng2-select2/commit/af513afc611701cb0826d05336216010232f945c)
+* Disable default style for select2 [2692aec](https://github.com/NejcZdovc/ng2-select2/commit/2692aecf6176a8c4a339715ed4fe6b89ba4040c8)
 
 ### BREAKING CHANGE
-With version 1.0.0 you can now pass all options that are available for select 2. But to accomplish that `theme`, `templateSelection` and `templateResult` where removed from inputs.
+With version 1.0.0 you can now pass all options that are available for select 2. But to accomplish that `theme`, `templateSelection` and `templateResult` where removed from direct `@Inputs`.
 
 # 0.7.0 (15.12.2016)
 
