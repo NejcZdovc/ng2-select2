@@ -7,8 +7,7 @@ export { Select2Component } from './src/select2.component';
 
 @NgModule({
     exports: [Select2Component],
-    declarations: [Select2Component],
-    providers: [Select2Component]
+    declarations: [Select2Component]
 })
 export class Select2Module {
 }
