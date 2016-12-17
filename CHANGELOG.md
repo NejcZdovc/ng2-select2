@@ -1,3 +1,12 @@
+# 1.0.0-beta
+
+### Features
+* Multiple options
+* Disable default style for select2
+
+### BREAKING CHANGE
+With version 1.0.0 you can now pass all options that are available for select 2. But to accomplish that `theme`, `templateSelection` and `templateResult` where removed from inputs.
+
 # 0.7.0 (15.12.2016)
 
 ### Features
