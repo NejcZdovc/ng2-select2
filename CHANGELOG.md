@@ -4,6 +4,7 @@
 * Multiple options [223f02f](https://github.com/NejcZdovc/ng2-select2/commit/223f02fc598cd4d550baf03f82874839ee95e2c1)
 * Updated dependencies [af513af](https://github.com/NejcZdovc/ng2-select2/commit/af513afc611701cb0826d05336216010232f945c)
 * Disable default style for select2 [2692aec](https://github.com/NejcZdovc/ng2-select2/commit/2692aecf6176a8c4a339715ed4fe6b89ba4040c8)
+* Support for custom matcher [d269db9](https://github.com/NejcZdovc/ng2-select2/commit/d269db9438b74c9200f5c4eca9c5dd3db71a9663)
 
 ### BREAKING CHANGE
 With version 1.0.0 you can now pass all options that are available for select 2. But to accomplish that `theme`, `templateSelection` and `templateResult` where removed from direct `@Inputs`.

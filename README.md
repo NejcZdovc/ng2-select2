@@ -97,3 +97,6 @@ Every single demo is separate component. Bellow you can find links to components
 #### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/dynamic) with dynamic load demo
 - data is loaded with 4 second delay
 - selected value is loaded with 6 second delay
+
+### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/matcher) with a custom matcher
+- we only match results if they are the same from the start of the string
