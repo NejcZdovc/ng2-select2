@@ -26,7 +26,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     // width of select2 input
     @Input() width: string;
 
-    // width of select2 input
+    // enable / disable select2
     @Input() disabled: boolean = false;
 
     // all additional options
