@@ -39,10 +39,12 @@ Add package to your project `npm i -S ng2-select2` (this will save package to yo
 
 1) Add declaration to [NgModule](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.module.ts#L15)
 ```
+import { Select2Module } from 'ng2-select2';
+
 @NgModule({
-  declarations: [
+  imports: [
     ....,
-    Select2Component
+    Select2Module
   ],
   ...
 })
