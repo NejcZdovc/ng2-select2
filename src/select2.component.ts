@@ -26,6 +26,9 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     // width of select2 input
     @Input() width: string;
 
+    // width of select2 input
+    @Input() disabled: boolean = false;
+
     // all additional options
     @Input() options: Select2Options;
 
@@ -75,6 +78,10 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.valueChanged.emit({
                 value: newValue
             });
+        }
+
+        if(changes['disabled'] && changes['disabled'].previousValue !== changes['disabled'].currentValue) {
+            this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
         }
     }
 
@@ -130,6 +137,10 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             });
         } else {
             this.element.select2(options);
+        }
+
+        if(this.disabled) {
+            this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
         }
     }
 
