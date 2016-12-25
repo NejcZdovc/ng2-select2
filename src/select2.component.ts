@@ -134,6 +134,11 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             jQuery.fn.select2.amd.require(['select2/compat/matcher'], (oldMatcher: any) => {
                 options.matcher = oldMatcher(options.matcher);
                 this.element.select2(options);
+
+                if (typeof this.value !== 'undefined') {
+                    this.renderer.setElementProperty(this.selector.nativeElement, 'value', this.value);
+                    this.element.trigger('change.select2');
+                }
             });
         } else {
             this.element.select2(options);
