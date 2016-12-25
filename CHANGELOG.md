@@ -7,7 +7,7 @@
 * Fixed no provider error [305a388](https://github.com/NejcZdovc/ng2-select2/commit/305a388acacffcb3f5ecc62a6b114a245b29558b)
 * Fixed multiple value emit [853837b](https://github.com/NejcZdovc/ng2-select2/commit/853837ba652422436a110511fc269b94fad5d532)
 * Added disabled options [b19a3ed](https://github.com/NejcZdovc/ng2-select2/commit/b19a3eda1c5583d2bfad26bf7752c162cf9838a7)
-
+* Fixed initial value when you are using custom matcher [e366b91](https://github.com/NejcZdovc/ng2-select2/commit/e366b91716510b72b48287cf1564e9eebb489c1a)
 
 ### BREAKING CHANGE
 With version 1.0.0 you can now pass all options that are available for select 2. But to accomplish that `theme`, `templateSelection` and `templateResult` where removed from direct `@Inputs`.
