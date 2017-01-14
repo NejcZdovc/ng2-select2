@@ -15,13 +15,13 @@ yarn.lock
 yarn-error.log
 .npmignore
 
-#TS files
-**/*.ts
-*.ts
-!**/*.d.ts
-!*.d.ts
-tsconfig.json
-tsconfig-aot.json
+# TS files
+# **/*.ts
+# *.ts
+# !**/*.d.ts
+# !*.d.ts
+# tsconfig.json
+# tsconfig-aot.json
 
 #System Files
 .DS_Store
