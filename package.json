@@ -24,7 +24,6 @@
     "watch": "tsc -w",
     "build": "tsc",
     "build-aot": "node_modules/.bin/ngc -p tsconfig-aot.json"
-
   },
   "dependencies": {
     "@types/jquery": "^2.0.34",
@@ -33,7 +32,8 @@
   "peerDependencies": {
     "@angular/common": "^2.2.0",
     "@angular/compiler": "^2.2.0",
-    "@angular/core": "^2.2.0"
+    "@angular/core": "^2.2.0",
+    "@angular/forms": "^2.2.0"
   },
   "devDependencies": {
     "@angular/common": "^2.3.1",
