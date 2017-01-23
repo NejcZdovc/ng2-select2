@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "sourceMap": true,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "stripInternal": true,
@@ -10,13 +11,10 @@
     "outDir": "./dist",
     "lib": ["es2015", "dom"]
   },
-  "files": [
-    "./lib/ng2-select2.ts"
-  ],
   "exclude": [
     "node_modules"
   ],
-  "angularCompilerOptions": {
-    "skipTemplateCodegen": true
-  }
+  "files": [
+    "./lib/ng2-select2.ts"
+  ]
 }
