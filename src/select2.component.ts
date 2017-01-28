@@ -73,7 +73,6 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             const newValue: string = changes['value'].currentValue;
 
             this.setElementValue(newValue);
-            this.element.trigger('change.select2');
 
             this.valueChanged.emit({
                 value: newValue
@@ -93,7 +92,6 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
         if (typeof this.value !== 'undefined') {
             this.setElementValue(this.value);
-            this.element.trigger('change.select2');
         }
 
         this.element.on('select2:select select2:unselect', function () {
@@ -137,7 +135,6 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
                 if (typeof this.value !== 'undefined') {
                     this.setElementValue(this.value);
-                    this.element.trigger('change.select2');
                 }
             });
         } else {
@@ -149,27 +146,17 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
     }
      
-    private setElementValue ( newValue ) {
+    private setElementValue (newValue:any) {
         // NOTE:
         // Multiple values are received from ngOnChanges as a string with single values separated by comma.
         // Select2OptionData id values should not contain commas for predictable results.
         // While using commas in ids is a bad idea generally, here may cause malfunctions.
-
-        if (newValue.indexOf(',') != -1) {
-            var singleVals = newValue.split(',');
-
-            for (var val of singleVals) {
-                for (var option of this.selector.nativeElement.options) {
-                    if(option.value == val) {
-                        this.renderer.setElementProperty(option, 'selected', 'true');
-                        break;
-                    }
-                }
-            }
-
-        } else {
-            this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
+        if(typeof newValue === 'string') {
+            newValue = newValue.split(',');
         }
+
+        this.element.val(newValue);
+        this.element.trigger('change.select2');
     }        
 
     private style: string = `
