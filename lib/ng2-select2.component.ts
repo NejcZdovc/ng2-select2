@@ -72,8 +72,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         if(changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
             const newValue: string = changes['value'].currentValue;
 
-            this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
-            this.element.trigger('change.select2');
+            this.setElementValue(newValue);
 
             this.valueChanged.emit({
                 value: newValue
@@ -92,8 +91,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         this.initPlugin();
 
         if (typeof this.value !== 'undefined') {
-            this.renderer.setElementProperty(this.selector.nativeElement, 'value', this.value);
-            this.element.trigger('change.select2');
+            this.setElementValue(this.value);
         }
 
         this.element.on('select2:select select2:unselect', function () {
@@ -136,8 +134,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
                 this.element.select2(options);
 
                 if (typeof this.value !== 'undefined') {
-                    this.renderer.setElementProperty(this.selector.nativeElement, 'value', this.value);
-                    this.element.trigger('change.select2');
+                    this.setElementValue(this.value);
                 }
             });
         } else {
@@ -147,6 +144,21 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         if(this.disabled) {
             this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
         }
+    }
+
+    private setElementValue (newValue:any) {
+        // NOTE:
+        // Multiple values are received from ngOnChanges as a string with single values separated by comma.
+        // Select2OptionData id values should not contain commas for predictable results.
+        // While using commas in ids is a bad idea generally, here may cause malfunctions.
+        // This works for arrays too.
+
+        if(typeof newValue === 'string') {
+            newValue = newValue.split(',');
+        }
+
+        this.element.val(newValue);
+        this.element.trigger('change.select2');
     }
 
     private style: string = `CSS`;
