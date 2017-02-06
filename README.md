@@ -75,35 +75,4 @@ Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-se
 
 ## Demo
 
-You can view a live demo [here](https://nejczdovc.github.io/ng2-select2/) or check out [demo branch](https://github.com/NejcZdovc/ng2-select2/tree/demo) where you can find source of this demo created with Angular CLI.
-
-Every single demo is separate component. Bellow you can find links to components with descriptions.
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/basic)
-- basic demo with only data input
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/options) with options
-- width option
-- theme option
-- multiple option
-- closeOnSelect option
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/template) with custom template demo
-- custom template for drop down
-- custom template for select2 input
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/change) with data changing demo
-- when you change value in drop down, new value is displayed on the screen
-- you can change selected value
-- you can change select2 data
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/dynamic) with dynamic load demo
-- data is loaded with 4 second delay
-- selected value is loaded with 6 second delay
-
-### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/matcher) with a custom matcher
-- we only match results if they are the same from the start of the string
-
-### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/multiple) with a multiple options
-- multiple options
-- default value
+You can view a live demo [here](https://nejczdovc.github.io/ng2-select2-demo) or check out [demo repo](https://github.com/NejcZdovc/ng2-select2-demo/) where you can find source of this demo created with Angular CLI.
