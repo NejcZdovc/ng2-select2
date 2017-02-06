@@ -103,3 +103,7 @@ Every single demo is separate component. Bellow you can find links to components
 
 ### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/matcher) with a custom matcher
 - we only match results if they are the same from the start of the string
+
+### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/multiple) with a multiple options
+- multiple options
+- default value

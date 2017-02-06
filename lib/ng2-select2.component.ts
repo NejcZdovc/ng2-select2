@@ -18,7 +18,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     @Input() data: Array<Select2OptionData>;
 
     // value for select2
-    @Input() value: any;
+    @Input() value: string | string[];
 
     // enable / disable default style for select2
     @Input() cssImport: boolean = true;
@@ -146,16 +146,17 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
     }
 
-    private setElementValue (newValue:any) {
-        // NOTE:
-        // Multiple values are received from ngOnChanges as a string with single values separated by comma.
-        // Select2OptionData id values should not contain commas for predictable results.
-        // While using commas in ids is a bad idea generally, here may cause malfunctions.
-        // This works for arrays too.
-
-        if(typeof newValue === 'string') {
-            newValue = newValue.split(',');
+    private setElementValue (newValue: string | string[]) {
+        if(Array.isArray(newValue)) {
+            for (let option of this.selector.nativeElement.options) {
+                if (newValue.indexOf(option.value) > -1) {
+                    this.renderer.setElementProperty(option, 'selected', 'true');
+                }
+           }
+        } else {
+            this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
         }
+
 
         this.element.val(newValue);
         this.element.trigger('change.select2');
