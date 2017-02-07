@@ -157,8 +157,6 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
         }
 
-
-        this.element.val(newValue);
         this.element.trigger('change.select2');
     }
 
