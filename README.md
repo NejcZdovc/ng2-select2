@@ -12,7 +12,7 @@ For this plugin to work you need to add two javascript libraries to your project
 - [Select2](https://select2.github.io/)
 
 First option and **preferred one** is to add libraries to your package builder.
-- You can find example of how to add libraries to the Angular CLI in [demo branch](https://github.com/NejcZdovc/ng2-select2/blob/demo/angular-cli.json#L24-L25). 
+- You can find example of how to add libraries to the Angular CLI in [demo repository](https://github.com/NejcZdovc/ng2-select2-demo/blob/master/angular-cli.json#L24-L25). 
 - You can also add it to [webpack directly](https://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack#answer-2898947). 
 
 Second option is to include libraries into your html head:
@@ -37,7 +37,7 @@ Add package to your project `npm i -S ng2-select2` (this will save package to yo
 
 ## Basic implementation
 
-1) Add declaration to [NgModule](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.module.ts#L15)
+1) Add declaration to [NgModule](https://github.com/NejcZdovc/ng2-select2-demo/blob/master/src/app/app.module.ts#L35)
 ```
 import { Select2Module } from 'ng2-select2';
 
@@ -50,9 +50,9 @@ import { Select2Module } from 'ng2-select2';
 })
 ```
 
-2) Add it to your [template](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.component.html#L6). You need to define at least `data` `@Input`.
+2) Add it to your [template](https://github.com/NejcZdovc/ng2-select2-demo/blob/master/src/app/app.component.html#L6). You need to define at least `data` `@Input`.
 
-Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/demos/basic/basic.component.ts#L13).
+Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-select2-demo/blob/master/src/app/demos/basic/basic.component.ts#L13).
 
 ```
 <select2 [data]="exampleData"></select2>
