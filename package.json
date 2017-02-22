@@ -1,9 +1,12 @@
 {
   "name": "ng2-select2",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.10",
   "description": "Angular2 wrapper for select2",
-  "main": "ng2-select2.js",
+  "main": "ng2-select2.bundle.js",
+  "jsnext:main": "ng2-select2.js",
   "typings": "ng2-select2.d.ts",
+  "module": "ng2-select2.js",
+  "types": "ng2-select2.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/NejcZdovc/ng2-select2.git"
@@ -20,34 +23,30 @@
   },
   "homepage": "https://github.com/NejcZdovc/ng2-select2",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "tsc -w",
-    "build": "tsc",
-    "build-aot": "node_modules/.bin/ngc -p tsconfig-aot.json"
+    "finish": "mv lib/ng2-select2.component.ts.bak lib/ng2-select2.component.ts && cp README.md dist && rimraf dist/ng2-select2.component.css",
+    "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng2-select2.js > dist/ng2-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish"
   },
   "dependencies": {
-    "@types/jquery": "^2.0.34",
-    "@types/select2": "^4.0.30"
+    "@types/jquery": "^2.0.39",
+    "@types/select2": "^4.0.31"
   },
   "peerDependencies": {
-    "@angular/common": "^2.2.0",
-    "@angular/compiler": "^2.2.0",
-    "@angular/core": "^2.2.0",
-    "@angular/forms": "^2.2.0"
+    "@angular/core": "^2.2.0"
   },
   "devDependencies": {
-    "@angular/common": "^2.3.1",
-    "@angular/compiler": "^2.3.1",
-    "@angular/compiler-cli": "^2.3.1",
-    "@angular/core": "^2.3.1",
-    "@angular/platform-browser": "^2.3.1",
-    "@angular/platform-browser-dynamic": "^2.3.1",
-    "@angular/platform-server": "2.3.1",
-    "@types/core-js": "^0.9.28",
-    "@types/node": "^6.0.52",
-    "core-js": "^2.2.0",
-    "rxjs": "^5.0.0-beta.12",
-    "zone.js": "0.7.2",
-    "typescript": "^2.0.0"
+    "@angular/common": "^2.4.4",
+    "@angular/compiler": "^2.4.4",
+    "@angular/compiler-cli": "^2.4.4",
+    "@angular/core": "^2.4.4",
+    "@angular/platform-browser": "^2.4.4",
+    "@angular/platform-browser-dynamic": "^2.4.4",
+    "@types/node": "^7.0.0",
+    "core-js": "^2.4.1",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.41.4",
+    "rxjs": "^5.0.3",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.5",
+    "zone.js": "^0.7.4"
   }
 }

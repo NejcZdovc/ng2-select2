@@ -50,9 +50,9 @@ import { Select2Module } from 'ng2-select2';
 })
 ```
 
-2) Add it to your [template](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/app.component.html#L6). You need to define at least `data` `@Input`.
+2) Add it to your [template](https://github.com/NejcZdovc/ng2-select2-demo/blob/master/src/app/demos/basic/basic.component.html#L3). You need to define at least `data` as `@Input`.
 
-Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-select2/blob/demo/src/app/demos/basic/basic.component.ts#L13).
+Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-select2-demo/blob/master/src/app/demos/basic/basic.component.ts#L13).
 
 ```
 <select2 [data]="exampleData"></select2>
@@ -62,7 +62,7 @@ Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-se
 ## Options
 
 ### Inputs
-* **data** `Array<Select2OptionData`: Data used for generating select 2
+* **data** `Array<Select2OptionData>`: Data used for generating select 2 - [inferface definition](https://github.com/NejcZdovc/ng2-select2/blob/master/lib/ng2-select2.interface.ts#L1)
 * **value** `string`: Default value for select 2
 * **cssImport** `boolean`: Disable or enable default style for select 2, default value is `true`
 * **width** `string`: Set width for the input, default value is `resolve`
@@ -75,31 +75,4 @@ Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-se
 
 ## Demo
 
-You can view a live demo [here](https://nejczdovc.github.io/ng2-select2/) or check out [demo branch](https://github.com/NejcZdovc/ng2-select2/tree/demo) where you can find source of this demo created with Angular CLI.
-
-Every single demo is separate component. Bellow you can find links to components with descriptions.
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/basic)
-- basic demo with only data input
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/options) with options
-- width option
-- theme option
-- multiple option
-- closeOnSelect option
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/template) with custom template demo
-- custom template for drop down
-- custom template for select2 input
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/change) with data changing demo
-- when you change value in drop down, new value is displayed on the screen
-- you can change selected value
-- you can change select2 data
-
-#### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/dynamic) with dynamic load demo
-- data is loaded with 4 second delay
-- selected value is loaded with 6 second delay
-
-### [Demo](https://github.com/NejcZdovc/ng2-select2/tree/demo/src/app/demos/matcher) with a custom matcher
-- we only match results if they are the same from the start of the string
+You can view a live demo [here](https://nejczdovc.github.io/ng2-select2-demo) or check out [demo repo](https://github.com/NejcZdovc/ng2-select2-demo/) where you can find source of this demo created with Angular CLI.
