@@ -9,7 +9,7 @@ import { Select2OptionData } from './ng2-select2.interface';
     selector: 'select2',
     template: `
         <select #selector>
-            <ng-content select="option">
+            <ng-content select="option, optgroup">
             </ng-content>
         </select>`,
     encapsulation: ViewEncapsulation.None,
