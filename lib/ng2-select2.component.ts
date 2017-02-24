@@ -7,7 +7,11 @@ import { Select2OptionData } from './ng2-select2.interface';
 
 @Component({
     selector: 'select2',
-    template: '<select #selector></select>',
+    template: `
+        <select #selector>
+            <ng-content select="option">
+            </ng-content>
+        </select>`,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
