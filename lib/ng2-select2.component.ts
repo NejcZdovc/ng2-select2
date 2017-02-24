@@ -115,16 +115,14 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.onChange(that.element.val());
             this.onTouched();
             this.valueChanged.emit({
-                value: this.element.val(),
-                data: this.element.select2('data')
+                value: this.element.val()
             });
         });
     }
 
     writeValue(newValue: any): void {
         if (!this.element) {
-            this.element = jQuery(this.selector.nativeElement);
-            this.initPlugin();
+            return;
         }
         if (typeof newValue !== 'undefined') {
             this.setElementValue(newValue);
