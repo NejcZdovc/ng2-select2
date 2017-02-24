@@ -29,7 +29,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     @Input() value: string | string[];
 
     // enable / disable default style for select2
-    @Input() cssImport: boolean = true;
+    @Input() cssImport: boolean = false;
 
     // width of select2 input
     @Input() width: string;
@@ -80,7 +80,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.onChange(newValue);
             this.onTouched();
             this.valueChanged.emit({
-                value: newValue
+                value: newValue,
+                data: this.element.select2('data')
             });
         }
 
@@ -92,7 +93,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.onChange(newValue);
             this.onTouched();
             this.valueChanged.emit({
-                value: newValue
+                value: newValue,
+                data: this.element.select2('data')
             });
         }
 
@@ -102,8 +104,6 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     }
 
     ngAfterViewInit() {
-        let that = this;
-
         this.element = jQuery(this.selector.nativeElement);
         this.initPlugin();
 
@@ -111,11 +111,12 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.setElementValue(this.value);
         }
 
-        this.element.on('select2:select select2:unselect', function () {
+        this.element.on('select2:select select2:unselect', () => {
             this.onChange(that.element.val());
             this.onTouched();
-            that.valueChanged.emit({
-                value: that.element.val()
+            this.valueChanged.emit({
+                value: this.element.val(),
+                data: this.element.select2('data')
             });
         });
     }
