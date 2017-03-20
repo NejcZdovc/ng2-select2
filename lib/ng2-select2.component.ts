@@ -94,7 +94,22 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.setElementValue(this.value);
         }
 
-        this.element.on('select2:select select2:unselect', () => {
+        this.element.on('select2:select', () => {
+            this.valueChanged.emit({
+                value: this.element.val(),
+                data: this.element.select2('data')
+            });
+        });
+        
+        this.element.on('select2:unselect', () => {
+            /* for some reason the element is still returned by val. Workaround for single-select controls */
+            if (this.options.multiple !== true) {
+                this.valueChanged.emit({
+                    value: null,
+                    data: this.element.select2('data')
+                });
+                return;
+            }
             this.valueChanged.emit({
                 value: this.element.val(),
                 data: this.element.select2('data')
