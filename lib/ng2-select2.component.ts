@@ -1,5 +1,5 @@
 import {
-    AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
+    AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
     Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer, OnInit
 } from '@angular/core';
 
@@ -11,7 +11,7 @@ import { Select2OptionData } from './ng2-select2.interface';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, OnInit {
+export class Select2Component implements AfterViewInit, DoCheck, OnChanges, OnDestroy, OnInit {
     @ViewChild('selector') selector: ElementRef;
 
     // data for select2 drop down
@@ -35,7 +35,11 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     // emitter when value is changed
     @Output() valueChanged = new EventEmitter();
 
+    onChange: Function = () => {};
+    onTouched: Function = () => {};
+
     private element: JQuery = undefined;
+    private oldValue: any = undefined;
     private check: boolean = false;
 
     constructor(private renderer: Renderer) { }
@@ -64,6 +68,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.initPlugin();
 
             const newValue: string = this.element.val();
+            this.onChange(newValue);
+            this.onTouched();
             this.valueChanged.emit({
                 value: newValue,
                 data: this.element.select2('data')
@@ -74,7 +80,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             const newValue: string = changes['value'].currentValue;
 
             this.setElementValue(newValue);
-
+            this.onChange(newValue);
+            this.onTouched();
             this.valueChanged.emit({
                 value: newValue,
                 data: this.element.select2('data')
@@ -83,6 +90,20 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
         if(changes['disabled'] && changes['disabled'].previousValue !== changes['disabled'].currentValue) {
             this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
+        }
+    }
+
+    ngDoCheck() {
+    	if (!this.element) {
+            return;
+        }
+        this.element = jQuery(this.selector.nativeElement);
+        if (this.element.val() !== this.oldValue) {
+            this.valueChanged.emit({
+                value: this.element.val(),
+	    	    data: this.element.select2('data')
+            });
+            this.oldValue = this.element.val();
         }
     }
 
@@ -95,6 +116,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
 
         this.element.on('select2:select', () => {
+            this.onChange(this.element.val());
+            this.onTouched();
             this.valueChanged.emit({
                 value: this.element.val(),
                 data: this.element.select2('data')
@@ -104,17 +127,29 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         this.element.on('select2:unselect', () => {
             /* for some reason the element is still returned by val. Workaround for single-select controls */
             if (this.options.multiple !== true) {
+                this.onChange(null);
+                this.onTouched();
                 this.valueChanged.emit({
                     value: null,
                     data: this.element.select2('data')
                 });
                 return;
             }
+            this.onChange(this.element.val());
+            this.onTouched();
             this.valueChanged.emit({
                 value: this.element.val(),
                 data: this.element.select2('data')
             });
         });
+    }
+
+    registerOnChange(fn: any): void {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any): void {
+        this.onTouched = fn;
     }
 
     ngOnDestroy() {
