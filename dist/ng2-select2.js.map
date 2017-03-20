@@ -1,0 +1,1 @@
+{"version":3,"file":"ng2-select2.js","sourceRoot":"","sources":["../lib/ng2-select2.ts"],"names":[],"mappings":";;;;;;;;AAAA,sCAAyC;AAGzC,iEAA2D;AAE3D,iEAA2D;AAAlD,mDAAA,gBAAgB,CAAA;AAMzB,IAAa,aAAa;IAA1B;IAA4B,CAAC;IAAD,oBAAC;AAAD,CAAC,AAA7B,IAA6B;AAAhB,aAAa;IAJzB,eAAQ,CAAC;QACN,YAAY,EAAE,CAAC,wCAAgB,CAAC;QAChC,OAAO,EAAE,CAAC,wCAAgB,CAAC;KAC9B,CAAC;GACW,aAAa,CAAG;AAAhB,sCAAa"}

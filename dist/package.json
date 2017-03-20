@@ -1,0 +1,32 @@
+{
+  "name": "ng2-select2",
+  "version": "1.0.0-beta.10",
+  "description": "Angular2 wrapper for select2",
+  "main": "ng2-select2.bundle.js",
+  "jsnext:main": "ng2-select2.js",
+  "typings": "ng2-select2.d.ts",
+  "module": "ng2-select2.js",
+  "types": "ng2-select2.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NejcZdovc/ng2-select2.git"
+  },
+  "keywords": [
+    "angular2",
+    "select2",
+    "wrap"
+  ],
+  "author": "Nejc Zdovc <nejc.zdovc@3zsistemi.si>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NejcZdovc/ng2-select2/issues"
+  },
+  "homepage": "https://github.com/NejcZdovc/ng2-select2",
+  "dependencies": {
+    "@types/jquery": "^2.0.39",
+    "@types/select2": "^4.0.31"
+  },
+  "peerDependencies": {
+    "@angular/core": "^2.2.0"
+  }
+}
