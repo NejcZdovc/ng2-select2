@@ -2,11 +2,11 @@
   "name": "ng2-select2",
   "version": "1.0.0-beta.10",
   "description": "Angular2 wrapper for select2",
-  "main": "ng2-select2.bundle.js",
-  "jsnext:main": "ng2-select2.js",
-  "typings": "ng2-select2.d.ts",
-  "module": "ng2-select2.js",
-  "types": "ng2-select2.d.ts",
+  "main": "./dist/ng2-select2.bundle.js",
+  "jsnext:main": "./dist/ng2-select2.js",
+  "typings": "./dist/ng2-select2.d.ts",
+  "module": "./dist/ng2-select2.js",
+  "types": "./dist/ng2-select2.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/NejcZdovc/ng2-select2.git"
