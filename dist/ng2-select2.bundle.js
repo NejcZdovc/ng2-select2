@@ -141,7 +141,9 @@ exports.Select2Component = Select2Component_1 = (function () {
         this.onTouched = fn;
     };
     Select2Component.prototype.ngOnDestroy = function () {
-        this.element.off("select2:select");
+	if (this.element) {
+           this.element.off("select2:select");
+	}
     };
     Select2Component.prototype.initPlugin = function () {
         var _this = this;
