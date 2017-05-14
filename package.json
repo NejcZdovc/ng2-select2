@@ -31,7 +31,7 @@
     "@types/select2": "^4.0.31"
   },
   "peerDependencies": {
-    "@angular/core": "^2.2.0"
+    "@angular/core": ">=2.2.0"
   },
   "devDependencies": {
     "@angular/common": "^2.4.4",
