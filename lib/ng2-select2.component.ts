@@ -1,6 +1,6 @@
 import {
     AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
-    Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer, OnInit
+    Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer, OnInit, DoCheck
 } from '@angular/core';
 
 import { Select2OptionData } from './ng2-select2.interface';
@@ -15,7 +15,7 @@ import { Select2OptionData } from './ng2-select2.interface';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, OnInit {
+export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, OnInit, DoCheck {
     @ViewChild('selector') selector: ElementRef;
 
     // data for select2 drop down
@@ -23,6 +23,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
     // value for select2
     @Input() value: string | string[];
+    private oldValueLength = 0;
 
     // enable / disable default style for select2
     @Input() cssImport: boolean = false;
@@ -87,6 +88,15 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
         if(changes['disabled'] && changes['disabled'].previousValue !== changes['disabled'].currentValue) {
             this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
+        }
+    }
+
+    ngDoCheck() {
+        if ($.isArray(this.value)) {
+            if (this.oldValueLength !== this.value.length) {
+                this.oldValueLength = this.value.length;
+                this.setElementValue(this.value);
+            }
         }
     }
 
