@@ -64,7 +64,7 @@ Example of `exampleData` can be found [here](https://github.com/NejcZdovc/ng2-se
 ### Inputs
 * **data** `Array<Select2OptionData>`: Data used for generating select 2 - [inferface definition](https://github.com/NejcZdovc/ng2-select2/blob/master/lib/ng2-select2.interface.ts#L1)
 * **value** `string`: Default value for select 2
-* **cssImport** `boolean`: Disable or enable default style for select 2, default value is `true`
+* **cssImport** `boolean`: Disable or enable default style for select 2, default value is `false`
 * **width** `string`: Set width for the input, default value is `resolve`
 * **disabled** `boolean`: Disable select2, default value is `false`
 * **options** `Select2Options`: Set options for select 2, [all available options](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/4869992bc079b88280b9ff91213528904109e8ae/select2/index.d.ts#L40) for select 2
