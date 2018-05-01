@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@types/jquery": "^2.0.39",
-    "@types/select2": "^4.0.31"
+    "@types/select2": "4.0.42"
   },
   "peerDependencies": {
     "@angular/core": ">=2.2.0"
