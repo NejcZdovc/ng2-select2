@@ -1,7 +1,8 @@
 import {
     AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
-    Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer, OnInit
+    Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer, OnInit, forwardRef
 } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { Select2OptionData } from './ng2-select2.interface';
 
@@ -13,9 +14,16 @@ import { Select2OptionData } from './ng2-select2.interface';
             </ng-content>
         </select>`,
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => Select2Component),
+            multi: true
+        }
+    ]
 })
-export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, OnInit {
+export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, OnInit, ControlValueAccessor {
     @ViewChild('selector') selector: ElementRef;
 
     // data for select2 drop down
@@ -38,6 +46,11 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
     // emitter when value is changed
     @Output() valueChanged = new EventEmitter();
+
+    onChange: Function = () => {
+    };
+    onTouched: Function = () => {
+    };
 
     private element: JQuery = undefined;
     private check: boolean = false;
@@ -68,6 +81,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.initPlugin();
 
             const newValue: string = this.element.val();
+            this.onChange(newValue);
+            this.onTouched();
             this.valueChanged.emit({
                 value: newValue,
                 data: this.element.select2('data')
@@ -79,6 +94,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
             this.setElementValue(newValue);
 
+            this.onChange(newValue);
+            this.onTouched();
             this.valueChanged.emit({
                 value: newValue,
                 data: this.element.select2('data')
@@ -99,11 +116,35 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
 
         this.element.on('select2:select select2:unselect', () => {
+            this.onChange(that.element.val());
+            this.onTouched();
             this.valueChanged.emit({
-                value: this.element.val(),
-                data: this.element.select2('data')
+                value: this.element.val()
             });
         });
+    }
+
+    writeValue(newValue: any): void {
+        if (!this.element) {
+            return;
+        }
+        if (typeof newValue !== 'undefined') {
+            this.setElementValue(newValue);
+        }
+
+        this.onChange(newValue);
+        this.onTouched();
+        this.valueChanged.emit({
+            value: newValue
+        });
+    }
+
+    registerOnChange(fn: any): void {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any): void {
+        this.onTouched = fn;
     }
 
     ngOnDestroy() {
