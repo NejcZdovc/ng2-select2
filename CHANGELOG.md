@@ -9,6 +9,7 @@
 * Added disabled options [b19a3ed](https://github.com/NejcZdovc/ng2-select2/commit/b19a3eda1c5583d2bfad26bf7752c162cf9838a7)
 * Fixed initial value when you are using custom matcher [e366b91](https://github.com/NejcZdovc/ng2-select2/commit/e366b91716510b72b48287cf1564e9eebb489c1a)
 * Added multiple value support via array's [4396df6](https://github.com/NejcZdovc/ng2-select2/commit/4396df6634a08594bfeb962f3b105e11cfec394b)
+* Fix async require oldMatcher [12f23188](https://github.com/NejcZdovc/ng2-select2/commit/12f23188f3bef3346802436c245c146c149a2b53)
 
 ### BREAKING CHANGE
 With version 1.0.0 you can now pass all options that are available for select 2. But to accomplish that `theme`, `templateSelection` and `templateResult` where removed from direct `@Inputs`.
