@@ -107,7 +107,9 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     }
 
     ngOnDestroy() {
-        this.element.off("select2:select");
+        if (this.element && this.element.off) {
+            this.element.off("select2:select");
+        }
     }
 
     private async initPlugin() {
