@@ -1,6 +1,6 @@
 {
   "name": "ng2-select2",
-  "version": "1.0.0-beta.14",
+  "version": "1.0.0-beta.15",
   "description": "Angular2 wrapper for select2",
   "main": "ng2-select2.bundle.js",
   "jsnext:main": "ng2-select2.js",
@@ -24,7 +24,8 @@
   "homepage": "https://github.com/NejcZdovc/ng2-select2",
   "scripts": {
     "finish": "mv lib/ng2-select2.component.ts.bak lib/ng2-select2.component.ts && cp README.md dist && rimraf dist/ng2-select2.component.css",
-    "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng2-select2.js > dist/ng2-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish"
+    "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng2-select2.js > dist/ng2-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish",
+    "publish": "cd dist && npm publish"
   },
   "dependencies": {
     "@types/jquery": "^2.0.39",
