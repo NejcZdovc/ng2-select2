@@ -59,15 +59,15 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    async ngOnChanges(changes: SimpleChanges) {
         if(!this.element) {
             return;
         }
 
         if(changes['data'] && JSON.stringify(changes['data'].previousValue) !== JSON.stringify(changes['data'].currentValue)) {
-            this.initPlugin();
+            await this.initPlugin();
 
-            const newValue: string = this.element.val();
+            const newValue: string = this.element.val() as string;
             this.valueChanged.emit({
                 value: newValue,
                 data: this.element.select2('data')
@@ -90,9 +90,9 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
     }
 
-    ngAfterViewInit() {
+    async ngAfterViewInit() {
         this.element = jQuery(this.selector.nativeElement);
-        this.initPlugin();
+        await this.initPlugin();
 
         if (typeof this.value !== 'undefined') {
             this.setElementValue(this.value);
@@ -110,7 +110,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         this.element.off("select2:select");
     }
 
-    private initPlugin() {
+    private async initPlugin() {
         if(!this.element.select2) {
             if(!this.check) {
                 this.check = true;
@@ -134,14 +134,13 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         Object.assign(options, this.options);
 
         if(options.matcher) {
-            jQuery.fn.select2.amd.require(['select2/compat/matcher'], (oldMatcher: any) => {
-                options.matcher = oldMatcher(options.matcher);
-                this.element.select2(options);
+            let oldMatcher: any = await this.requireOldMatcher();
+            options.matcher = oldMatcher(options.matcher);
+            this.element.select2(options);
 
-                if (typeof this.value !== 'undefined') {
-                    this.setElementValue(this.value);
-                }
-            });
+            if (typeof this.value !== 'undefined') {
+                this.setElementValue(this.value);
+            }
         } else {
             this.element.select2(options);
         }
@@ -149,6 +148,14 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         if(this.disabled) {
             this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
         }
+    }
+
+    private async requireOldMatcher() : Promise<any> {
+        return new Promise<any[]>(resolve => {
+            jQuery.fn.select2.amd.require(['select2/compat/matcher'], (oldMatcher: any) => {
+                resolve(oldMatcher);
+            });
+        });
     }
 
     private setElementValue (newValue: string | string[]) {
