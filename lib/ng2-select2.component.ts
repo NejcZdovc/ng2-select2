@@ -139,12 +139,12 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             let oldMatcher: any = await this.requireOldMatcher();
             options.matcher = oldMatcher(options.matcher);
             this.element.select2(options);
-
-            if (typeof this.value !== 'undefined') {
-                this.setElementValue(this.value);
-            }
         } else {
             this.element.select2(options);
+        }
+
+        if (typeof this.value !== 'undefined') {
+            this.setElementValue(this.value);
         }
 
         if(this.disabled) {
