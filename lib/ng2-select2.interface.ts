@@ -7,5 +7,12 @@ export interface Select2OptionData {
 }
 
 export interface Select2TemplateFunction {
-    (state: Select2OptionData): JQuery | string;
+    (state: Select2OptionData): string;
+}
+
+export class Select2OptionInject { }
+
+export interface ValueChangedEmition {
+    value: string | string[];
+    data?: any;
 }
