@@ -163,9 +163,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     private setElementValue (newValue: string | string[]) {
         if(Array.isArray(newValue)) {
             for (let option of this.selector.nativeElement.options) {
-                if (newValue.indexOf(option.value) > -1) {
-                    this.renderer.setElementProperty(option, 'selected', 'true');
-                }
+                this.renderer.setElementProperty(option, 'selected', newValue.indexOf(option.value) > -1 ? 'true' : null);
            }
         } else {
             this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
